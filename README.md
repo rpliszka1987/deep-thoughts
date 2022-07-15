@@ -13,7 +13,7 @@
 - **Apollo** is a server-side and client-side libary which works with GraphQL
 - Install both libraries `npm i apollo-server-express graphql`
 - **nodemon (Node monitor)** npm package that refresh the browser automatically on file changes. Helps avoid starting and killing the server.
-- **Apollo Studio Explorer** - is a built in tool that automatically set up with the Apollo server and lets us our GraphQL quesries and mutations. 
+- **Apollo Studio Explorer** - is a built in tool that automatically set up with the Apollo server and lets us our GraphQL quesries and mutations.
 
 ## GraphQL
 
@@ -30,4 +30,21 @@
   - index.js
 - Next step is to setup the Apollo server in the `server.js` directory. Look in `./sever/server.js` in the application files.
 - To start Apollo Server run the following command `$ npm run watch`
-- Got to ```http://localhost:3001/graphql``` to load up the Apollo Studio Explorer. 
+- Got to `http://localhost:3001/graphql` to load up the Apollo Studio Explorer.
+- Getting data from the API use the following code
+
+```
+query {
+  # find a username from your previous query's results and paste it in for `<username-goes-here>` (i.e. "Wilton18")
+  thoughts(username: "<username-goes-here>") {
+    username
+    thoughtText
+  }
+}
+```
+
+- Resolver can accept 4 arguments:
+- **parent** - This is if we used nested resolvers to handle more complicated actions, as it would hold the reference to the resolver that executed the nested resolver function.
+- **args** - This is an object of all of the values passed into a query or mutation request as parameters. In this application its username.
+- **context** - f we were to need the same data to be accessible by all resolvers, such as a logged-in user's status or API access token, this data will come through this context parameter as an object.
+- **info** - This will contain extra information about an operation's current state
