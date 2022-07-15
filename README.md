@@ -48,3 +48,6 @@ query {
 - **args** - This is an object of all of the values passed into a query or mutation request as parameters. In this application its username.
 - **context** - f we were to need the same data to be accessible by all resolvers, such as a logged-in user's status or API access token, this data will come through this context parameter as an object.
 - **info** - This will contain extra information about an operation's current state
+
+- **Mutation** is used for creating, updating, and deleting operations in GraphQL
+
