@@ -14,6 +14,7 @@
 - Install both libraries `npm i apollo-server-express graphql`
 - **nodemon (Node monitor)** npm package that refresh the browser automatically on file changes. Helps avoid starting and killing the server.
 - **Apollo Studio Explorer** - is a built in tool that automatically set up with the Apollo server and lets us our GraphQL quesries and mutations.
+- **JSON Web Token (JWT)** - used for authentitcation. It encodes the information about user into a token.
 
 ## GraphQL
 
@@ -51,3 +52,10 @@ query {
 
 - **Mutation** is used for creating, updating, and deleting operations in GraphQL
 
+## JSON Web Token (JWT)
+
+- JWT takes user information we want to pass to the backend and encodes it with information we would like to pass to it. This way it knows exactly users information and all other information provided.
+- The token should not include sensitive data such as password. Also always sign your tokens with a secret.
+- Install by running ` $ npm i jsonwebtoken`
+- Create a `auth.js` files inside the `utils` directory in the `server` directory.
+- For set up of JWT look into `./server/utils/auth.js` directory.
