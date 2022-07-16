@@ -59,3 +59,27 @@ query {
 - Install by running ` $ npm i jsonwebtoken`
 - Create a `auth.js` files inside the `utils` directory in the `server` directory.
 - For set up of JWT look into `./server/utils/auth.js` directory.
+- HTTP header is the best to include for authorization.
+- To get a user authentication token run the following code in the Appolo Studio Exporer
+
+```
+mutation login($email: String!, $password: String!) {
+  login(email: $email, password: $password) {
+    token
+    user {
+      _id
+    }
+  }
+}
+
+```
+
+Make sure to include Variable
+
+```
+{
+  "email": "test2@test.com",
+  "password": "test12345"
+
+}
+```
