@@ -143,3 +143,21 @@ function App() {
     </ApolloProvider>
   );
 ```
+
+## Running servers
+
+- Currently we need to start two servers to run the applicaiton. We need to start the server and client server.
+- There is a solution for this. Use the following steps:
+  In root of application run `$ npm init -y`
+  Followed by `$ npm i -D concurrently` this runs multiple servers from a single command line.
+- This will be an application that will control the two other applications server and client
+- In package.json add the following code for scripts
+
+```
+"scripts": {
+  "start": "node server/server.js",
+  "develop": "concurrently \"cd server && npm run watch\" \"cd client && npm start\"",
+  "install": "cd server && npm i && cd ../client && npm i",
+  "seed": "cd server && npm run seed"
+}
+```
