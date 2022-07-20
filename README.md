@@ -83,3 +83,63 @@ Make sure to include Variable
 
 }
 ```
+
+## Create Client Side
+
+- Create a client side to handle the front-end of the application. This will be in the client directory separate from the server side. The root of the application will have `server` and `client` directories in it.
+- Create React files for the project by running the following command:
+  `$ npx create-react-app client`
+- CD into the driectory and run `$ npm start` to start the React application to make sure it all works.
+- Remove all the default files which had been created by the React application creating. Add files to choose which files you want to display in your application.
+
+## Install and Set Up Apollo Client
+
+- To install the Apollo Client run the following command in the `client` directory
+  `$ npm i @apollo/client graphql`
+- Import Apollo Client in the `App.js` file in the root of the client directory
+
+```
+import {
+  ApolloProvider,
+  ApolloClient,
+  InMemoryCache,
+  createHttpLink,
+} from "@apollo/client";
+```
+
+- Here is what each one of them do:
+  - `ApolloProvider` - is a special type of React component that we'll use to provide data to all of the other components.
+  - `ApolloCient` - is a constructor function that will help initialize the connection to the GraphQL API server.
+  - `InMemoryCache` - enables the Apollo Client instance to cache API response data so that we can perform requests more efficiently.
+  - `createHttpLink` - allows us to control how the Apollo Client makes a request. Think of it like middleware for the outbound network requests
+  - Add the connection between front and back end. in the `App.js` file above App function declatarion add the following code.
+
+```
+const httpLink = createHttpLink({
+uri: 'http://localhost:3001/graphql',
+});
+
+
+const client = new ApolloClient({
+link: httpLink,
+cache: new InMemoryCache(),
+});
+
+```
+
+- Next update the App() to ApolloProvider
+
+```
+function App() {
+  return (
+    <ApolloProvider client={client}>
+      <div className="flex-column justify-flex-start min-100-vh">
+        <Header />
+        <div className="container">
+          <Home />
+        </div>
+        <Footer />
+      </div>
+    </ApolloProvider>
+  );
+```
