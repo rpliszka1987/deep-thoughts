@@ -163,10 +163,45 @@ function App() {
 ```
 
 ## React Router
-- Helps with going to different pages but in reality React is still on the same page. 
-- In ```client``` directory run ```$ npm i react-router-dom``` this will install the react router in the application
+
+- Helps with going to different pages but in reality React is still on the same page.
+- In `client` directory run `$ npm i react-router-dom` this will install the react router in the application
 - In App.js import the react router
+
 ```
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 ```
-- You set up the routes in the App.js file in the App() look in ```client/src/App.js``` directory
+
+- You set up the routes in the App.js file in the App() look in `client/src/App.js` directory
+- In react you cant just use <a> because that will change the page url. Since React is a single page application we use React Router Links
+
+## React Router Links
+
+- To get this set up in the Header part of the application we need to add the links to go from one page to another.
+- This is done in the `./client/src/components/Header/index.js` directory.
+- First import Link from the React Router
+
+```
+import { Link } from "react-router-dom";
+```
+
+- Then you set up the routes using the following code.
+
+```
+<Link to="/signup">Signup</Link>
+```
+
+- React Couter supports URL parameters:
+
+```
+<Routes>
+  <Route path="/profile">
+    <Route path=":username" element={<Profile />} />
+    <Route path="" element={<Profile />} />
+  </Route>
+  <Route
+    path="/thought/:id"
+    element={<SingleThought />}
+  />
+</Routes>
+```

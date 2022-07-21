@@ -13,7 +13,7 @@ import Footer from "./components/Footer";
 import Home from "./pages/Home";
 import Login from "./pages/Login";
 import NoMath from "./pages/NoMatch";
-import SingleThoght from "./pages/SingleThought";
+import SingleThought from "./pages/SingleThought";
 import Profile from "./pages/Profile";
 import SignUp from "./pages/Signup";
 import ThoughtList from "./components/ThoughtList";
@@ -43,9 +43,12 @@ function App() {
               {/* Sign up page */}
               <Route path="/signup" element={<SignUp />} />
               {/* Profile page */}
-              <Route path="/profile" element={<Profile />} />
+              <Route path="/profile">
+                <Route path=":username" element={<Profile />} />
+                <Route path="" element={<Profile />} />
+              </Route>
               {/* Single Thought page */}
-              <Route path="/thought" element={<SingleThoght />} />
+              <Route path="/thought/:id" element={<SingleThought />} />
               {/* Any other route that dont match anthing */}
               <Route path="*" element={<NoMath />} />
             </Routes>
