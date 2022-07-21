@@ -161,3 +161,12 @@ function App() {
   "seed": "cd server && npm run seed"
 }
 ```
+
+## React Router
+- Helps with going to different pages but in reality React is still on the same page. 
+- In ```client``` directory run ```$ npm i react-router-dom``` this will install the react router in the application
+- In App.js import the react router
+```
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
+```
+- You set up the routes in the App.js file in the App() look in ```client/src/App.js``` directory
