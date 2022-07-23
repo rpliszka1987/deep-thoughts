@@ -205,3 +205,7 @@ import { Link } from "react-router-dom";
   />
 </Routes>
 ```
+
+## jwt-decode
+- Library that works with the JSON web tocken. 
+- To install run ```$ npm i jwt-decode``` in the ```client``` directory. 
