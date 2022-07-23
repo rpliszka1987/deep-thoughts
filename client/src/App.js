@@ -17,14 +17,25 @@ import SingleThought from "./pages/SingleThought";
 import Profile from "./pages/Profile";
 import SignUp from "./pages/Signup";
 import ThoughtList from "./components/ThoughtList";
+import { setContext } from "@apollo/client/link/context";
 
 // Connection between front and back end
 const httpLink = createHttpLink({
   uri: "/graphql",
 });
 
+const authLink = setContext((_, { headers }) => {
+  const token = localStorage.getItem("id_token");
+  return {
+    headers: {
+      ...headers,
+      authorization: token ? `Bearer ${token}` : "",
+    },
+  };
+});
+
 const client = new ApolloClient({
-  link: httpLink,
+  link: authLink.concat(httpLink),
   cache: new InMemoryCache(),
 });
 
